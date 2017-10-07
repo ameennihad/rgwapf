@@ -20,7 +20,8 @@ Any Ricoh printer with GW controller 09A models or above, the default value of t
 <h2>How to configure print queue to use this solution</h2>
 This solution is tested on FreeBSD and IBM AIX 5.3, as a first step we need to install Ricoh Unix Filter this step is common for all unix/linux disributions
 <h3>Installing Ricoh Unix Filter</h3>
-TBA
+<p>Download and install the right Unix Filter for your printer from Ricoh website, this can be found in the driver download page, at the end of the page look for <span style="font-weight:bold">Firmware/Other OS</span>, under that there is a link for the Unix filter called <span style="font-weight:bold">UNIX</span>, click that link and follow the download and installation instructions included in the file.</p>
+<p>For IBM AIX, install standard print queue without device options, don't user virtual queue.</p>
 <h3>FreeBSD Installation</h3>
 TBA
 <h3>IBM AIX 5.3 Installation</h3>
