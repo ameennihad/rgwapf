@@ -45,7 +45,7 @@ Execute the following commands to change permission and ownership of both files.
 <li>Access: Read/Write (Not sure if this is necessary)</li>
 </ul>
 <p>At this point your queue configuration file should include the following:</p>
-'''
+```
 lp_sp5300dn:
 	device = @sp5300dn
 	up = TRUE
@@ -61,5 +61,5 @@ sp5300:
 sp5300.dev:
 	access = both
 	backend = /usr/local/bin/myfilters/sp5300.filter
-'''  
+```  
 Test printing using this command (lp -d sp5300 file_name).
