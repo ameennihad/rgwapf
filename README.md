@@ -27,14 +27,14 @@ Download and install the right Unix Filter for your printer from Ricoh website, 
 
 For IBM AIX, install standard print queue without device options, don't user virtual queue.
 
-In the next sections I'm assuming that the print queue create here is called (lp_sp5300dn) and the print host name is halled (sp5300dn), you can choose any name you want but make sure you change the name in the script as well.
+In the next sections I'm assuming that the print queue create here is called (lp_sp5300dn) and the print host name is called (sp5300dn), you can choose any name you want but make sure you change the name in the script as well.
 
 You need to add printer host name and IP address to your /etc/hosts file.
 
 ### FreeBSD Configuration
 Download the file (rgwapf.c) compile it with your favorite C compiler, name the output file (rgwapf) and copy it to (/usr/local/libexec)
 
-Make the file executable usignfollowing command:
+Make the file executable using the following command:
 ```
 chmod 755 /usr/local/libexec/rgwapf
 ```
@@ -52,7 +52,6 @@ lp_sp5300dn:\
 	:lf=/var/log/lpd-errs:\
 	:if=/usr/local/libexec/rgwapf:sh:tr=\f:mx#0:
 ```
-Test printing using this command (lp -d lp_sp5300dn finel_name) or (lpr -Plp_sp5300dn file_name).
 
 ### IBM AIX 5.3 Configuration
 In addition to the print queue created with Ricoh Unix filter, we need to create a second queue to execute the filter and pass its output to the first queue.
@@ -67,7 +66,7 @@ Execute the following commands to change permission and ownership of both files.
 - chown bin:printq /usr/local/bin/myfilters/sp5300.filter
 
 Edit the file (sp5300.filter) and change the value of (printer) varibale to match the queue name created by Ricoh Unix Filter.
-Add a second queue using “smit spooler”, this will be the frontend queue, select “Add a Print Queue” then “other” and set queue parameters as follows:
+Add a second queue using “smit spooler”, this will be the frontend queue, select “**Add a Print Queue**” then “**other**” and set queue parameters as follows:
 
 - Queue Name: sp5300
 - Device Name: sp5300.dev
@@ -93,3 +92,15 @@ sp5300.dev:
 	backend = /usr/local/bin/myfilters/sp5300.filter
 ```  
 Test printing using this command (lp -d sp5300 file_name).
+
+## Testing the Filter
+Test printing using one of the following commands:
+```
+lp -d lp_sp5300dn finel_name
+lpr -Plp_sp5300dn file_name
+```
+
+## Credit
+
+Thanks for Jaco Bezuidenhout for his support with AIX print queue configuration
+http://it.toolbox.com/people/jakethehake/
