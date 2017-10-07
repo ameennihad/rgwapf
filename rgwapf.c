@@ -1,9 +1,5 @@
 /*RGWAPF V0.3*/
 /*RICOH GW Arabic Print Filter*/
-/*Copyright 2017 Uruk Engineering Services Co., Ltd.*/
-/*For support contact Ameen N. Nihad at:*/
-/*email: ameen.nihad@urukco.com*/
-/*Mobile: +964-(0)7508118000*/
 
 #include <stdio.h>
 #include <stdlib.h>
