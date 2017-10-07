@@ -103,4 +103,5 @@ lpr -Plp_sp5300dn file_name
 ## Credit
 
 Thanks for Jaco Bezuidenhout for his support with AIX print queue configuration
+
 http://it.toolbox.com/people/jakethehake/
