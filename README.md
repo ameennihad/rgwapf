@@ -55,7 +55,7 @@ lp_sp5300dn:\
 
 Test printing using one of the following commands:
 ```
-lp -d lp_sp5300dn finel_name
+lp -d lp_sp5300dn file_name
 lpr -Plp_sp5300dn file_name
 ```
 
@@ -99,7 +99,7 @@ sp5300.dev:
 ```  
 Test printing using one of the following commands:
 ```
-lp -d sp5300 finel_name
+lp -d sp5300 file_name
 lpr -Psp5300 file_name
 ```
 
