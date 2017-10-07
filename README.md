@@ -102,6 +102,8 @@ Test printing using one of the following commands:
 lp -d sp5300 file_name
 lpr -Psp5300 file_name
 ```
+## Other Unix/Linux Distributions
+I haven't tested the code on any OS other than the ones mentioned above, however the C code is a standard filter and should work on any Unix/Linux like OS. The tricky part is how to configure the print queue to use the code as input filter.
 
 ## Credit
 
