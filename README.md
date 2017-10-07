@@ -20,8 +20,10 @@ Any Ricoh printer with GW controller 09A models or above, the default value of t
 <h2>How to configure print queue to use this solution</h2>
 This solution is tested on FreeBSD and IBM AIX 5.3, as a first step we need to install Ricoh Unix Filter this step is common for all Unix/Linux distributions
 <h3>Installing Ricoh Unix Filter</h3>
-<p>Download and install the right Unix Filter for your printer from Ricoh website, this can be found in the driver download page, at the end of the page look for <span style="font-weight:bold">Firmware/Other OS</span>, under that there is a link for the Unix filter called <span style="font-weight:bold">UNIX</span>, click that link and follow the download and installation instructions included in the file.</p>
+<p>Download and install the right Unix Filter for your printer from Ricoh website, this can be found in the driver download page, at the end of the page look for **Firmware/Other OS**, under that there is a link for the Unix filter called **UNIX**, click that link and follow the download and installation instructions included in the file.</p>
 <p>For IBM AIX, install standard print queue without device options, don't user virtual queue.</p>
+<p>In the next sections I'm assuming that the print queue create here is called (lp_sp5300dn) and the print host name is halled (sp5300dn), you can choose any name you want but make sure you change the name in the script as well.</p>
+<p>You need to add printer host name and IP address to your /etc/hosts file.</p>
 <h3>FreeBSD Configuration</h3>
 TBA
 <h3>IBM AIX 5.3 Configuration</h3>
@@ -35,3 +37,28 @@ TBA
 <li>chown bin:printq /usr/local/bin/myfilters/sp5300.filter</li>
 </ul>
 <p>Edit the file (sp5300.filter) and change the value of (printer) varibale to match the queue name created by Ricoh Unix Filter.</p>
+<p>Add a second queue using “smit spooler”, this will be the frontend queue, select “Add a Print Queue” then “other” and set queue parameters as follows:</p>
+<ul>
+<li>Queue Name: sp5300</li>
+<li>Device Name: sp5300.dev</li>
+<li>BACKEND PROGAM pathname: /usr/local/bin/myfilters/sp5300.filter</li>
+<li>Access: Read/Write (Not sure if this is necessary)</li>
+</ul>
+<p>At this point your queue configuration file should include the following:</p>
+lp_sp5300dn:
+	device = @sp5300dn
+	up = TRUE
+	host = sp5300dn
+	s_statfilter = /usr/lib/lpd/aixshort
+	l_statfilter = /usr/lib/lpd/aixlong
+	rq = text
+@sp5300dn:
+	backend = /usr/lib/lpd/rembak
+sp5300:
+	device = sp5300.dev
+	up = TRUE
+sp5300.dev:
+	access = both
+	backend = /usr/local/bin/myfilters/sp5300.filter
+  
+Test printing using this command (lp -d sp5300 file_name).
