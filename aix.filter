@@ -5,13 +5,16 @@
 # This script must be called from a frontend queue of type 'other' by
 # setting the 'BACKEND PROGAM pathname' parameter to the path of the script.
 #
+# If you have more than one printer on your server, you should create 
+# seperate copy of this file for each printer, rename each file to match
+# your print queue name.
 umask 000
 file=$1
 
 #==============================================
 # change the value to the name of backend queue
 #==============================================
-printer="lp_sp5300dn"
+printer="lp_backend"
 
 /usr/local/bin/myfilters/rgwapf < $file | lp -d $printer
 
