@@ -17,3 +17,11 @@ Any Ricoh printer with GW controller 09A models or above, the default value of t
       <tr valign="top"><td>Symbol Set</td><td valign="top">PC-864</td></tr></tbody></table>
 <p>For older GW model from 05S to 09S, symbol set PC-864 cannot be configured as the default. Print jobs need to contain appropriate PCL symbol set commands to specify the symbol set, this can be done from a script file, not yet implemented in this solution. </p>
 <p>For GW models older than 05S, symbol set PC-864 is not supported, therefor this solution cannot be used.
+<h2>How to configure print queue to use this solution</h2>
+This solution is tested on FreeBSD and IBM AIX 5.3, as a first step we need to install Ricoh Unix Filter this step is common for all unix/linux disributions
+<h3>Installing Ricoh Unix Filter</h3>
+TBA
+<h3>FreeBSD Installation</h3>
+TBA
+<h3>IBM AIX 5.3 Installation</h3>
+TBA
