@@ -53,6 +53,12 @@ lp_sp5300dn:\
 	:if=/usr/local/libexec/rgwapf:sh:tr=\f:mx#0:
 ```
 
+Test printing using one of the following commands:
+```
+lp -d lp_sp5300dn finel_name
+lpr -Plp_sp5300dn file_name
+```
+
 ### IBM AIX 5.3 Configuration
 In addition to the print queue created with Ricoh Unix filter, we need to create a second queue to execute the filter and pass its output to the first queue.
 
@@ -91,13 +97,10 @@ sp5300.dev:
 	access = both
 	backend = /usr/local/bin/myfilters/sp5300.filter
 ```  
-Test printing using this command (lp -d sp5300 file_name).
-
-## Testing the Filter
 Test printing using one of the following commands:
 ```
-lp -d lp_sp5300dn finel_name
-lpr -Plp_sp5300dn file_name
+lp -d sp5300 finel_name
+lpr -Psp5300 file_name
 ```
 
 ## Credit
