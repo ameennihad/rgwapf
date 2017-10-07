@@ -32,7 +32,28 @@ In the next sections I'm assuming that the print queue create here is called (lp
 You need to add printer host name and IP address to your /etc/hosts file.
 
 ### FreeBSD Configuration
-TBA
+Download the file (rgwapf.c) compile it with your favorite C compiler, name the output file (rgwapf) and copy it to (/usr/local/libexec)
+
+Make the file executable usignfollowing command:
+```
+chmod 755 /usr/local/libexec/rgwapf
+```
+Now we need to add input filter to the queue created with Ricoh Unix Filter, to do that open the file (/etc/printcap) with your favorite text editor and add the following line to print queue settings:
+```
+if=/usr/local/libexec/rgwapf:sh:tr=\f:mx#0:
+```
+your print queue settings should look like the following:
+
+```
+lp_sp5300dn:\
+		:rm=x.x.x.x:\
+	:rp=text:\
+	:sd=/var/spool/lpd/lp_sp5300dn:\
+	:lf=/var/log/lpd-errs:\
+	:if=/usr/local/libexec/rgwapf:sh:tr=\f:mx#0:
+```
+Test printing using this command (lp -d lp_sp5300dn finel_name) or (lpr -Plp_sp5300dn file_name).
+
 ### IBM AIX 5.3 Configuration
 In addition to the print queue created with Ricoh Unix filter, we need to create a second queue to execute the filter and pass its output to the first queue.
 
