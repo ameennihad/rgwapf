@@ -1,17 +1,19 @@
 #!/bin/ksh
 #
 # Notes; This file must have permissions of 755 and be owned by bin:printq
-# Change printer value to the name of your standard queue
+#
+# This script must be called from a frontend queue of type 'other' by
+# setting the 'BACKEND PROGAM pathname' parameter to the path of the script.
+#
 umask 000
-	file=$1
-	printer="lp_sp5300dn"
-	filename=`echo $1|awk 'BEGIN {FS="/";} {print $NF;}'`
-	
-	/usr/local/bin/myfilters/rgwapf < $file > /tmp/$filename 
-	
-	lp -cd $printer /tmp/$filename
+file=$1
 
-	#rm /tmp/$filename
-		
+#==============================================
+# change the value to the name of backend queue
+#==============================================
+printer="lp_sp5300dn"
+
+/usr/local/bin/myfilters/rgwapf < $file | lp -d $printer
+
 exit $?
-# 
+#
