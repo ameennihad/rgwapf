@@ -26,11 +26,12 @@ This solution is tested on FreeBSD and IBM AIX 5.3, as a first step we need to i
 TBA
 <h3>IBM AIX 5.3 Configuration</h3>
 <p>In addition to the print queue created with Ricoh Unix filter, we need to create a second queue to execute the filter and pass its output to the first queue.</p>
-<p>First download the file (rgwapf.c) to your AIX server and compile it, name the output file (rgwapf) and copy it to (/usr/local/bin/myfilters), also download (aix.filter) to same folder</p>
-<p>Execute the following commands to change permission and ownership of both files</p>
+<p>First download the file (rgwapf.c) to your AIX server and compile it, name the output file (rgwapf) and copy it to (/usr/local/bin/myfilters), also download (aix.filter) to same folder, rename the file to match your print queue, in the following steps I'm assuming the file is renamed to sp5300.filter.</p>
+<p>Execute the following commands to change permission and ownership of both files.</p>
 <ul>
 <li>chmod 755 /usr/local/bin/myfilters/rgwapf</li>
 <li>chmod 755 /usr/local/bin/myfilters/sp5300.filter</li>
 <li>chown bin:printq /usr/local/bin/myfilters/rgwapf</li>
 <li>chown bin:printq /usr/local/bin/myfilters/sp5300.filter</li>
 </ul>
+<p>Edit the file (sp5300.filter) and change the value of (printer) varibale to match the queue name created by Ricoh Unix Filter.</p>
