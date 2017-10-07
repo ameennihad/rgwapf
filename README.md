@@ -1,4 +1,4 @@
-# Rioch GW Arabic Print Filter (rgwapf)
+# RICOH GW Arabic Print Filter (rgwapf)
 
 A Unix filter in C language to support Arabic text printing on Ricoh MFPs/Printers with GW controller
 ## Supported input file encoding
