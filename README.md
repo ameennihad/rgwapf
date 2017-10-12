@@ -1,6 +1,6 @@
 # RICOH GW Arabic Print Filter (rgwapf)
 
-A Unix filter in C language to support Arabic text printing on Ricoh MFPs/Printers with GW controller.
+A Unix filter written in C language to support Arabic text printing from Unix/Linux on Ricoh MFPs/Printers with GW controller.
 ## Supported input file encoding
 Currently ISO1256, to support other encodings the character map table (charmap[]) can be modified.
 ## Supported Printers
